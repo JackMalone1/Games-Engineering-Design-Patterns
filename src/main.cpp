@@ -6,7 +6,7 @@
 
 #include "../include/BrickFactory.h"
 
-int main(int argv, char** args)
+void createBricks()
 {
     Factory* factory = new BrickFactory();
     std::vector<Brick*> bricks;
@@ -18,6 +18,11 @@ int main(int argv, char** args)
     {
         brick->draw();
     }
+}
+
+int main(int argv, char** args)
+{
+    createBricks();
 
     Game *game = new Game();
 
