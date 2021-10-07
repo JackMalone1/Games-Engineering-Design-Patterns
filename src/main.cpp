@@ -4,20 +4,33 @@
 #include <SDL2/SDL.h>
 #include <vector>
 
-#include "../include/BrickFactory.h"
+#include "../include/WoodBrickFactory.h"
+#include "../include/ClayBrickFactory.h"
+#include "../include/LegoBrickFactory.h"
 
-void createBricks()
+#include "../include/BasicDrawImpl.h"
+#include "../include/OpenGLDraw.h"
+#include "../include/VulkanDraw.h"
+
+void drawBricks(std::vector<Brick*> t_bricks)
 {
-    Factory* factory = new BrickFactory();
-    std::vector<Brick*> bricks;
-    bricks.push_back(factory->createClayBrick());
-    bricks.push_back(factory->createLegoBrick());
-    bricks.push_back(factory->createWoodBrick());
-
-    for(Brick* brick : bricks)
+    for(Brick* brick : t_bricks)
     {
         brick->draw();
     }
+}
+
+void createBricks()
+{
+    Factory* factory = new WoodBrickFactory();
+    std::vector<Brick*> bricks = factory->getBricks(5, new BasicDrawImpl("Wood"));
+    drawBricks(bricks);
+    factory = new ClayBrickFactory();
+    bricks = factory->getBricks(5, new OpenGLDraw("Clay"));
+    drawBricks(bricks);
+    factory = new LegoBrickFactory();
+    bricks = factory->getBricks(5, new VulkanDraw("Lego"));
+    drawBricks(bricks);
 }
 
 int main(int argv, char** args)

@@ -1,14 +1,10 @@
 #pragma once
 
 #include "Brick.h"
-#include "LegoBrick.h"
-#include "ClayBrick.h"
-#include "WoodBrick.h"
+#include <vector>
 
 class Factory
 {
 public:
-    virtual Brick* createLegoBrick() = 0;
-    virtual Brick* createWoodBrick() = 0;
-    virtual Brick* createClayBrick() = 0;
+    virtual std::vector<Brick*> getBricks(int t_numberOfBricks, DrawAPI* t_drawApi) = 0;
 };

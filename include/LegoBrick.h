@@ -3,9 +3,12 @@
 
 class LegoBrick : public Brick
 {
+    DrawAPI* api;
 public:
+    LegoBrick(DrawAPI* t_api) : api(t_api){};
+
     void draw()
     {
-        std::cout << "Draw Lego Brick" << std::endl;
+        api->Draw();
     }
 } ;

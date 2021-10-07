@@ -4,9 +4,12 @@
 
 class WoodBrick : public Brick
 {
+    DrawAPI* api;
 public:
-void draw()
-{
-    std::cout << "Draw Wood Brick" << std::endl;
-}
+    WoodBrick(DrawAPI* t_api) : api(t_api){};
+
+    void draw()
+    {
+        api->Draw();
+    }
 };
