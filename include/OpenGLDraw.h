@@ -7,15 +7,17 @@
 class OpenGLDraw : public DrawAPI
 {
     std::string m_typeofBrick;
+    GraphicProxy m_proxy;
 public:
     OpenGLDraw(std::string t_brickName) : m_typeofBrick(t_brickName)
     {
-
+        m_proxy.setBrickName(m_typeofBrick);
+        m_proxy.setAPIName("OpenGL");
     }
 
 
     void Draw()
     {
-        std::cout << "Draw" + m_typeofBrick + " brick with opengl" << std::endl;
+        m_proxy.Draw();
     }
 };

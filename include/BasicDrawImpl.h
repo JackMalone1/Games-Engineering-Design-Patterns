@@ -7,15 +7,17 @@
 class BasicDrawImpl : public DrawAPI
 {
     std::string m_typeofBrick;
+    GraphicProxy m_proxy;
 public:
     BasicDrawImpl(std::string t_brickName) : m_typeofBrick(t_brickName)
     {
-
+        m_proxy.setBrickName(m_typeofBrick);
+        m_proxy.setAPIName("Basic");
     }
 
 
     void Draw()
     {
-        std::cout << "Draw " + m_typeofBrick + " brick with basic draw" << std::endl;
+        m_proxy.Draw();
     }
 };
